@@ -3,10 +3,6 @@ helloworld() :- write('Hello World!'), nl.
 inverter(_,_).
 inverter([H|T],[Z|H]) :- inverter(T,Z).
 inverter(X) :- inverter(X,Y), write(Y).
-*/
-
-
-
 tipo(rhydon,pedra).
 tipo(rhydon,terra).
 segundaEvolucao(rhydon).
@@ -66,3 +62,25 @@ run_all_rules :-
     run_rules(Rules). % Call the predicate to run all rules
 
 [ultimaEvolucao,terceiraEvolucao]
+*/
+
+equals(String, Result) :-
+    (String = 's' ->
+        Result = true
+    ;
+        Result = false
+    ).
+
+akinator('Rhydon', 'tipo pedra?').
+akinator('Charmander', 'tipo fogo?').
+
+
+perguntar(Pergunta,X) :- write(Pergunta) ,nl,read(Resposta),nl, equals(Resposta,X), X.
+
+
+
+% solve(Pergunta,Pokemons) :- !.
+% solve(Pergunta,Pokemons) :- perguntar(Pergunta,Resposta) ,akinator(X,Pergunta,Resposta is 's')==Pokemons.
+solve(Pergunta,Pokemons) :- !.
+solve(Pergunta,Pokemons) :- perguntar(Pergunta,Resposta), akinator(Pokemons,Pergunta), (Resposta = true -> akinator(Pokemons,ProximaPergunta); \+ akinator(Pokemons,ProximaPergunta)) , solve(Pokemons,ProximaPergunta).
+
