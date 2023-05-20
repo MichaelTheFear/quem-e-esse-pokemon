@@ -71,9 +71,12 @@ equals(String, Result) :-
         Result = false
     ).
 
-akinator('Rhydon', 'tipo pedra?').
-akinator('Charmander', 'tipo fogo?').
 
+
+akinator('Rhydon', 'tipo pedra?').
+akinator('Geodude','tipo pedra?').
+akinator('Charmander', 'tipo fogo?').
+%[É vermelho?, [[Tem nove rabos?, [[É uma evolução?, [Ninetales, Vulpix]], Charmander]], [É do tipo água?, [Gyarados, Rhydon]]]]
 
 perguntar(Pergunta,X) :- write(Pergunta) ,nl,read(Resposta),nl, equals(Resposta,X), X.
 
@@ -84,3 +87,4 @@ perguntar(Pergunta,X) :- write(Pergunta) ,nl,read(Resposta),nl, equals(Resposta,
 solve(Pergunta,Pokemons) :- !.
 solve(Pergunta,Pokemons) :- perguntar(Pergunta,Resposta), akinator(Pokemons,Pergunta), (Resposta = true -> akinator(Pokemons,ProximaPergunta); \+ akinator(Pokemons,ProximaPergunta)) , solve(Pokemons,ProximaPergunta).
 
+%swipl
