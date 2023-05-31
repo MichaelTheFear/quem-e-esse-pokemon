@@ -12,8 +12,11 @@ addArvore(Arvore,Destino,Valor,NewList) :- addArvore2(Arvore,Destino,Valor,NewLi
 % ['teste.pl'],arvore(L), addArvore(L,3,7,N). 
 
 
-pokemons(['Eh vermelho?', [['Tem nove rabos?', [['Eh uma evolucao?', ['Ninetales', 'Vulpix']], 'Charmander']], ['Eh do tipo agua?', ['Gyarados', 'Rhydon']]]]).
+pokemons([['Eh vermelho?', ['Scizor', 'Charmander']], ['Eh do tipo agua?', ['Gyarados', 'Rhydon']]]).
 
+
+addArvore3(Arvore,Destino,Pergunta,NovoValor,S_N,NovaLista) :- (is_list(Arvore)) -> (Arvore=[H,T],addArvore3(T,Destino,Pergunta,NovoValor,S_N,NovaLista2) , addArvore3(H,Destino,Pergunta,NovoValor,S_N,NovaLista3), NovaLista=[NovaLista3,NovaLista2]); 
+                                                ((Arvore=Destino) -> ((S_N='n') -> NovaLista=[Pergunta,[Destino,NovoValor]]; NovaLista=[Pergunta,[NovoValor,Destino]]),!; NovaLista=Arvore).
 
 /*
 addPokemons(Pokemons,Pergunta,NovoPokemon,Resposta,QualPokemon,NovaLista):
