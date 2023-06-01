@@ -49,3 +49,5 @@ addPokemons(Pokemons,Pergunta,NovoPokemon,Resposta,QualPokemon,NovaLista) :-
             NovaLista=Pokemons).
 
 runAddPokemons :- pokemons(Pokemons), addPokemons(Pokemons,'Eh um Dragão?','Charizard','s','Charmander',NovaLista), write(NovaLista).
+
+teste(A) :- is_list(A).
