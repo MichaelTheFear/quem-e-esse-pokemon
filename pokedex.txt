@@ -1,0 +1,4 @@
+:- dynamic lista/1.
+
+lista(['Eh vermelho?', ['Charmander', 'Rhydon']]).
+
